@@ -17,10 +17,10 @@ function game() {
   canvas.height = 1280;
 
   let pipes = [];
-  let pipeWidth = 150;
+  let pipeWidth = 120;
   let pipeSpwanTimer = 0;
   let birdY = 20;
-  let birdX = 50;
+  let birdX = 200;
   let birdWidth = 80;
   let birdHeight = 150;
   let birdVelocity = 0;
@@ -29,7 +29,7 @@ function game() {
   let dead = false;
   let animationId = null;
   let spawnInterval = 240; // frames between pipe spawns
-  let baseSpeed = 1.5;
+  let baseSpeed = 3;
 
   const gravity = 0.4;
   const jumpForce = -8;
@@ -59,7 +59,7 @@ function game() {
     pipes = [];
     pipeSpwanTimer = 0;
     birdY = 20;
-    birdX = 100;
+    birdX = 200;
     birdVelocity = 0;
     score = 0;
     dead = false;
@@ -145,7 +145,7 @@ function game() {
           highScore = score;
           highScoreElement.innerText = `HighScore: ${highScore}`;
         }
-        if (score % 5 === 0 && spawnInterval > 60) {
+        if (score % 5 === 0 && spawnInterval > 30) {
           spawnInterval -= 30; // increase difficulty
           baseSpeed += 0.5; // increase pipe speed
         }
