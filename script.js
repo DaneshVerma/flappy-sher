@@ -145,8 +145,8 @@ function game() {
           highScore = score;
           highScoreElement.innerText = `HighScore: ${highScore}`;
         }
-        if (score % 5 === 0 && spawnInterval > 30) {
-          spawnInterval -= 30; // increase difficulty
+        if (score % 5 === 0 && spawnInterval > 60) {
+          spawnInterval -= 15; // increase difficulty
           baseSpeed += 0.5; // increase pipe speed
         }
       }
@@ -206,7 +206,7 @@ function game() {
   }
 
   window.addEventListener("keydown", function (e) {
-    if (e.code === "Space") {
+    if (e.code === "Space" || e.code === "ArrowUp") {
       birdVelocity = jumpForce;
     } else if (e.code === "ArrowLeft") {
       birdX = birdX - 10;
