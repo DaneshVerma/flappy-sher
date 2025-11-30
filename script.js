@@ -2,7 +2,8 @@ const scoreElement = document.getElementById("scoreBoard");
 const gameOverScreen = document.getElementById("gameOverScreen");
 const finalScore = document.getElementById("finalScore");
 const restartBtn = document.getElementById("restartBtn");
-
+const gameSong = new Audio("./sounds/game.mp3");
+const crashSong = new Audio("./sounds/crash.mp3");
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 ctx.imageSmoothingQuality = "high";
@@ -50,9 +51,11 @@ function resetGame() {
   birdX = 50;
   birdVelocity = 0;
   score = 0;
-  dead = false;
+  dead = false;  
   scoreElement.innerText = score;
   gameOverScreen.classList.add("hidden");
+    scoreElement.classList.remove("hidden");
+
 }
 
 function restart() {
@@ -60,6 +63,8 @@ function restart() {
   loop();
 }
 function gameOver() {
+  gameSong.pause();
+  gameSong.currentTime = 0;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   gameOverScreen.classList.remove("hidden");
   scoreElement.classList.add("hidden");
@@ -98,7 +103,7 @@ function loop() {
   // DRAW BIRD
   ctx.fillStyle = "transparent";
   ctx.drawImage(BiirdImg, birdX, birdY, birdWidth, birdHeight);
-
+  gameSong.play();
   // UPDATE BIRD
   birdVelocity += gravity;
   birdY += birdVelocity;
@@ -161,6 +166,7 @@ function loop() {
 
   // game-over trigger
   if (dead) {
+    crashSong.play();
     gameOver();
     return;
   }
