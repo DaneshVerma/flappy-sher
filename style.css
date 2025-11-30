@@ -88,14 +88,27 @@ canvas {
       font-weight: 900;
       text-shadow: black 1px 2px 3px;
     }
-    #restartBtn {
-      padding: 10px 20px;
-      font-size: 2rem;
-      cursor: pointer;
-      border: none;
-      border-radius: 5px;
-      background-color: #28a745;
-      color: white;
+    .btnContainer {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+
+      span {
+        color: gainsboro;
+        font-size: 1rem;
+      }
+
+      #restartBtn {
+        padding: 10px 20px;
+        font-size: 2rem;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #28a745;
+        color: white;
+      }
     }
   }
 }
@@ -135,16 +148,30 @@ canvas {
       font-size: 1.5rem;
       margin: 20px 0;
       font-weight: 600;
+      color: gainsboro;
+      text-shadow: black 1px 2px 3px;
     }
-    #startBtn {
-      padding: 10px 20px;
-      font-size: 2rem;
-      cursor: pointer;
-      border: none;
-      border-radius: 5px;
-      font-weight: 700;
-      background-color: #007bff;
-      color: white;
+    .btnContainer {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+
+      span {
+        color: gainsboro;
+        font-size: 1rem;
+      }
+
+      #startBtn {
+        padding: 10px 20px;
+        font-size: 2rem;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        font-weight: 700;
+        background-color: #007bff;
+        color: white;
+      }
     }
   }
 }

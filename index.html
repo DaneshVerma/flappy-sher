@@ -17,16 +17,29 @@
       <div class="card">
         <h1 class="sher">🦁</h1>
         <h1>Flappy Sher!</h1>
-        <button id="startBtn">Start Game</button>
+        <div class="btnContainer">
+          <button id="startBtn">Start Game</button>
+          <span
+            ><i><b>Click or Press Enter</b></i></span
+          >
+        </div>
+        <p>
+          Press the <b>Spacebar</b> to make Sher fly! <br />
+          <b>Left / Right</b> Arrow Keys to move sideways. <br />
+          Avoid the obstacles and score as much as you can.
+        </p>
       </div>
     </div>
     <div id="gameOverScreen" class="hidden">
       <div class="card">
         <h1>Game Over!</h1>
         <p id="finalScore"></p>
-        <button id="restartBtn">
-          <b>Restart</b> / <span><i>Press Enter</i></span>
-        </button>
+        <div class="btnContainer">
+          <button id="restartBtn">Restart</button>
+          <span
+            ><i><b>Click or Press Enter</b></i></span
+          >
+        </div>
       </div>
     </div>
     <script src="script.js"></script>

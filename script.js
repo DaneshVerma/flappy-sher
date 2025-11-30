@@ -77,7 +77,6 @@ function game() {
     gameOverScreen.classList.remove("hidden");
     finalScore.innerText = `Your score is: ${score}`;
     cancelAnimationFrame(animationId);
-
     restartBtn.onclick = restart;
   }
 
@@ -202,6 +201,13 @@ function game() {
     } else if (e.code === "ArrowRight") {
       birdX = birdX + 10;
     } else if (e.code === "Enter") {
+      if (!gameStartScreen.classList.contains("hidden")) {
+        gameStartScreen.classList.add("hidden");
+        highScoreElement.innerText = `HighScore: ${highScore}`;
+        scoreBoard.classList.remove("hidden");
+        scoreBoard.style.display = "flex";
+        loop();
+      }
       if (dead) {
         restart();
       }
