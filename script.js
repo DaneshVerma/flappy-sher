@@ -77,7 +77,7 @@ function game() {
     gameSong.pause();
     gameSong.currentTime = 0;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    localStorage.setItem("flappyscore", score);
+    score > highScore ? localStorage.setItem("flappyscore", score) : null;
     gameOverScreen.classList.remove("hidden");
     finalScore.innerText = `Your score is: ${score}`;
     cancelAnimationFrame(animationId);
