@@ -30,6 +30,7 @@ function game() {
   let animationId = null;
   let spawnInterval = 240; // frames between pipe spawns
   let baseSpeed = 3;
+  let backgroundOffsetY = 0; // track background vertical position
 
   const gravity = 0.4;
   const jumpForce = -8;
@@ -64,6 +65,8 @@ function game() {
     score = 0;
     dead = false;
     spawnInterval = 180;
+    backgroundOffsetY = 0;
+    canvas.style.backgroundPosition = `center calc(50% + ${backgroundOffsetY}px)`;
     scoreElement.innerText = `Score : ${score}`;
     gameOverScreen.classList.add("hidden");
     scoreElement.classList.remove("hidden");
@@ -117,6 +120,11 @@ function game() {
     // UPDATE BIRD
     birdVelocity += gravity;
     birdY += birdVelocity;
+
+    // UPDATE BACKGROUND POSITION (parallax effect)
+    backgroundOffsetY += birdVelocity * 0.2; // move background at 20% of bird speed
+    backgroundOffsetY = Math.max(-100, Math.min(100, backgroundOffsetY)); 
+    canvas.style.backgroundPosition = `center calc(50% + ${backgroundOffsetY}px)`;
 
     // UPDATE + DRAW PIPES
     for (let i = 0; i < pipes.length; i++) {
@@ -208,6 +216,9 @@ function game() {
   window.addEventListener("keydown", function (e) {
     if (e.code === "Space" || e.code === "ArrowUp") {
       birdVelocity = jumpForce;
+      // background jumps slightly with the bird (clamped to prevent white space)
+      backgroundOffsetY += jumpForce * 0.3;
+      backgroundOffsetY = Math.max(-100, Math.min(100, backgroundOffsetY));
     } else if (e.code === "ArrowLeft") {
       birdX = birdX - 10;
     } else if (e.code === "ArrowRight") {
